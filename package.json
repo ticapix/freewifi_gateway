@@ -5,7 +5,8 @@
   "main": "main.js",
   "dependencies": {
     "proxyquire": "^1.7.10",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "winston-logrotate": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
