@@ -13,7 +13,7 @@ It uses:
 ### Package dependencies
 
 ```sh
-apt-get -y install hostapd dnsmasq python3-virtualenv
+apt-get install -y hostapd dnsmasq python3-virtualenv
 ```
 
 ### Installation
