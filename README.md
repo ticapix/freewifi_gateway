@@ -12,8 +12,10 @@ It uses:
 
 ### Package dependencies
 
+I used [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) Lite from September 2016.
+
 ```sh
-apt-get install -y iw iproute2 hostapd dnsmasq python3-virtualenv
+apt-get install -y iw iproute2 hostapd dnsmasq python3 virtualenv
 ```
 
 ### Installation
@@ -24,6 +26,7 @@ unzip freewifi_gateway.zip
 cd freewifi_gateway-master
 sudo ./setup.sh
 ```
+
 and it'll reboot.
 
 ### Configuration
