@@ -1,0 +1,24 @@
+{
+  "name": "freewifi_gateway",
+  "version": "1.0.0",
+  "description": "It connect to a FreeWifi hotspot and share the connection via WPA2 protected Wifi network and the Ethernet port",
+  "main": "main.js",
+  "dependencies": {
+    "proxyquire": "^1.7.10",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ticapix/freewifi_gateway.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ticapix/freewifi_gateway/issues"
+  },
+  "homepage": "https://github.com/ticapix/freewifi_gateway#readme"
+}
