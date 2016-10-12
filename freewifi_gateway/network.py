@@ -46,8 +46,4 @@ def connect_FreeWifi():
         }
     """
     call('wpa_supplicant', '-Dnl80211', '-iwlan0_sta', '-c/tmp/wpa_supplicant.conf')
-
-#     curl -X POST -F 'login=3087856586' -F 'password=ticapix57'  https://wifi.free.fr/Auth
-
-#     curl -X POST -F 'login=3087856586' -F 'password=ticapix57' 'https://wifi.free.fr/Auth?url=http://www.bing.com/'
      
