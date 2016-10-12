@@ -18,7 +18,18 @@ fi
 . venv3/bin/activate
 
 echo "installing dependencies"
-pip install -r requirements.txt
+#pip install -r requirements.txt
 
 echo "installing daemon"
-echo "TODO"
+cp ./freewifi_gateway.daemon /etc/init.d/freewifi_gateway
+chmod +x /etc/init.d/freewifi_gateway
+NAME="freewifi_gateway"
+PIDFILE="/var/run/$NAME.pid"
+DAEMON="`pwd`/venv3/bin/python"
+DAEMON_ARGS="`pwd`/run.py --pidfile $PIDFILE"
+cat >> /etc/init.d/freewifi_gateway <<EOF
+NAME="$NAME"
+PIDFILE="$PIDFILE"
+DAEMON="$DAEMON"
+DAEMON_ARGS="$DAEMON_ARGS"
+EOF
