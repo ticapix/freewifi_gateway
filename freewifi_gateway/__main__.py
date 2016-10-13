@@ -1,23 +1,24 @@
 import sys
-
-try:
-    import jinja2
-    import flask
-except ImportError as e:
-    print(e)
-    print("this script must run from the virtual environment")
-    sys.exit(1)
-
+from multiprocessing import Process
 
 from . import network
+from . import webserver
+from . import hostapd
 
-network.init_interfaces()
+#network.init_interfaces()
 
 print(network.is_FreeWifi_available())
+
+webserver = Process(target=webserver.do_start).start()
+
+hostapd = hostapd.Service()
+hostapd.start()
+
 
 import time
 while True:
     time.sleep(1)
+
     
 sys.exit(0)
 
@@ -83,12 +84,3 @@ class CheckConnection(State):
         return Action.Search_FreeWifi
         
 sys.exit(0)
-from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-if __name__ == "__main__":
-    app.run()
