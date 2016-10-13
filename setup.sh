@@ -1,5 +1,9 @@
 #!/bin/sh
 
+cd `pwd`/$(dirname $0)
+
+#apt-get install -y iw iproute2 hostapd dnsmasq python3-venv systemd
+
 dpkg -l firmware-atheros | grep --quiet '20160824-1'
 if [ $? -ne 0 ]; then
     echo "installing new atheros firmware 20160824-1"
@@ -21,15 +25,22 @@ echo "installing dependencies"
 #pip install -r requirements.txt
 
 echo "installing daemon"
-cp ./freewifi_gateway.daemon /etc/init.d/freewifi_gateway
-chmod +x /etc/init.d/freewifi_gateway
-NAME="freewifi_gateway"
-PIDFILE="/var/run/$NAME.pid"
-DAEMON="`pwd`/venv3/bin/python"
-DAEMON_ARGS="`pwd`/run.py --pidfile $PIDFILE"
-cat >> /etc/init.d/freewifi_gateway <<EOF
-NAME="$NAME"
-PIDFILE="$PIDFILE"
-DAEMON="$DAEMON"
-DAEMON_ARGS="$DAEMON_ARGS"
+cat > `pwd`/freewifi_gateway.service <<EOF
+[Unit]
+Description=FreeWifi Gateway service
+After=network.target
+Before=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=`pwd`
+ExecStart=`pwd`/venv3/bin/python -m freewifi_gateway
+Restart=on-failure
+RestartSec=42
+
+[Install]
+WantedBy=multi-user.target
 EOF
+
+systemctl enable "`pwd`/freewifi_gateway.service"
+systemctl restart freewifi_gateway.service
