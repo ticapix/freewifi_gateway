@@ -10,13 +10,9 @@ It uses:
 
 ## Software
 
-### Package dependencies
+### OS
 
 I used [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) Lite from September 2016.
-
-```sh
-apt-get install -y iw iproute2 hostapd dnsmasq python3-venv
-```
 
 ### Installation
 
