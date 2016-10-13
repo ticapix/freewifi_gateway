@@ -1,6 +1,6 @@
 # FreeWifi gateway
 
-It connect to a FreeWifi hotspot and share the connection via WPA2 protected Wifi network and the Ethernet port 
+It connects to a [FreeWifi](https://wifi.free.fr/) hotspot and shares the connection via a WPA2 protected Wifi network and the Ethernet port.
 
 ## Hardware
 It uses:
@@ -22,8 +22,6 @@ unzip freewifi_gateway.zip
 cd freewifi_gateway-master
 sudo ./setup.sh
 ```
-
-and it'll reboot.
 
 ### Configuration
 
