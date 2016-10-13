@@ -3,7 +3,6 @@ import sys
 try:
     import jinja2
     import flask
-    import selenium
 except ImportError as e:
     print(e)
     print("this script must run from the virtual environment")
@@ -16,6 +15,10 @@ network.init_interfaces()
 
 print(network.is_FreeWifi_available())
 
+import time
+while True:
+    time.sleep(1)
+    
 sys.exit(0)
 
 class State(object):
