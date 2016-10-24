@@ -3,16 +3,16 @@ from multiprocessing import Process
 
 from . import network
 from . import webserver
-from . import hostapd
+from . import hotspot
 
-#network.init_interfaces()
+network.init_interfaces()
 
 print(network.is_FreeWifi_available())
 
 webserver = Process(target=webserver.do_start).start()
 
-hostapd = hostapd.Service()
-hostapd.start()
+hotspot = hotspot.Service()
+hotspot.restart()
 
 
 import time
