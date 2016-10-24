@@ -2,7 +2,10 @@
 
 cd `pwd`/$(dirname $0)
 
-#apt-get install -y iw iproute2 hostapd dnsmasq python3-venv systemd
+# python version
+pyver=3.5
+
+apt-get --no-install-recommends install -y iw iproute2 hostapd dnsmasq python$pyver python$pyver-venv systemd
 
 dpkg -l firmware-atheros | grep --quiet '20160824-1'
 if [ $? -ne 0 ]; then
@@ -16,13 +19,13 @@ fi
 echo "checking for the python virtual environment"
 if [ ! -d venv3 ]; then
     echo "creating one"
-    python3 -m venv venv3
+    python$pyver -m venv venv3
 fi
 
 . venv3/bin/activate
 
 echo "installing dependencies"
-#pip install -r requirements.txt
+pip install -r requirements.txt
 
 echo "installing daemon"
 cat > `pwd`/freewifi_gateway.service <<EOF
@@ -42,5 +45,5 @@ RestartSec=42
 WantedBy=multi-user.target
 EOF
 
-systemctl enable "`pwd`/freewifi_gateway.service"
-systemctl restart freewifi_gateway.service
+#systemctl enable "`pwd`/freewifi_gateway.service"
+#systemctl restart freewifi_gateway.service
