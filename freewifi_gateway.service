@@ -1,0 +1,14 @@
+[Unit]
+Description=FreeWifi Gateway service
+After=network.target
+Before=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/freewifi_gateway
+ExecStart=/home/pi/freewifi_gateway/venv3/bin/python -m freewifi_gateway
+Restart=on-failure
+RestartSec=42
+
+[Install]
+WantedBy=multi-user.target
